@@ -12,13 +12,13 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt \
     && pip install --no-cache-dir prometheus-client prometheus-fastapi-instrumentator
 
+USER appuser
+
 COPY . .
 
 VOLUME /app/data
 
 EXPOSE 8001:8001
-
-USER appuser
 
 ENV PYTHONUNBUFFERED=1
 
