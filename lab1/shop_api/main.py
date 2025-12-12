@@ -14,6 +14,8 @@ from prometheus_fastapi_instrumentator import Instrumentator
 
 
 DATABASE_URL = os.getenv("DATABASE_URL", "postgresql+asyncpg://shop_user:shop_password@localhost:5432/shop_db")
+if DATABASE_URL.startswith("postgresql://"):
+    DATABASE_URL = DATABASE_URL.replace("postgresql://", "postgresql+asyncpg://", 1)
 
 engine = create_async_engine(DATABASE_URL, echo=False)
 async_session_maker = async_sessionmaker(engine, class_=AsyncSession, expire_on_commit=False)
@@ -78,11 +80,10 @@ class CartIdResponse(BaseModel):
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):  # pragma: no cover
-    # БД отключена для демонстрации bad practices
-    # async with engine.begin() as conn:
-    #     await conn.run_sync(Base.metadata.create_all)
+    async with engine.begin() as conn:
+        await conn.run_sync(Base.metadata.create_all)
     yield
-    # await engine.dispose()
+    await engine.dispose()
 
 
 app = FastAPI(title="Shop API", lifespan=lifespan)
