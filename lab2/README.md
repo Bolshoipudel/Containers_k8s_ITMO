@@ -57,7 +57,7 @@ services:
 
 ### Как можно запустить только определенный сервис из docker-compose.yml, не запуская остальные?
 
-- Запустить сервис вместе с его зависемостиями (depends on):
+- Запустить сервис вместе с его зависимостиями (depends on):
 
     ```bash
     docker compose up single_server
@@ -69,7 +69,7 @@ services:
     docker compose up first_server second_server ...
     ```
 
-- Запустить сервис без зависемостей:
+- Запустить сервис без зависимостей:
 
     ```bash
     docker compose up --no-deps single_server
