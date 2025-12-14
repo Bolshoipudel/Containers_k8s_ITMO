@@ -18,8 +18,8 @@ services:
 
   shop-api:
     build:
-      context: ../lab1
-      dockerfile: Dockerfile.good
+      context: .
+      dockerfile: Dockerfile
     image: shop-api:latest
     container_name: shop-api
     depends_on:
