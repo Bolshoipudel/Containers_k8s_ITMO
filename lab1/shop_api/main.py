@@ -80,10 +80,11 @@ class CartIdResponse(BaseModel):
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):  # pragma: no cover
-    async with engine.begin() as conn:
-        await conn.run_sync(Base.metadata.create_all)
+    # БД отключена для демонстрации bad practices
+    # async with engine.begin() as conn:
+    #     await conn.run_sync(Base.metadata.create_all)
     yield
-    await engine.dispose()
+    # await engine.dispose()
 
 
 app = FastAPI(title="Shop API", lifespan=lifespan)
