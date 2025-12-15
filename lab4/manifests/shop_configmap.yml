@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: shop-configmap
+  labels:
+    app: shop
+data:
+  POSTGRES_DB: "shopdb"
+  SHOP_PORT: "8001"
