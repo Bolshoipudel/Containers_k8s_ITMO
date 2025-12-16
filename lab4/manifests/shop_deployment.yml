@@ -2,15 +2,25 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: shop
+  labels:
+    app: shop
+    component: backend
+    version: v1
+    managed-by: kubernetes
 spec:
   replicas: 1
   selector:
     matchLabels:
       app: shop
+      component: backend
   template:
     metadata:
       labels:
         app: shop
+        component: backend
+        version: v1
+        tier: application
+        role: api-server
     spec:
       initContainers:
         - name: shop-init-container

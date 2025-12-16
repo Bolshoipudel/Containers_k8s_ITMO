@@ -4,6 +4,8 @@ metadata:
   name: shop-configmap
   labels:
     app: shop
+    component: backend
+    version: v1
 data:
   POSTGRES_DB: "shopdb"
   SHOP_PORT: "8001"

@@ -4,6 +4,8 @@ metadata:
   name: shop-service
   labels:
     app: shop
+    component: backend
+    version: v1
 spec:
   type: NodePort
   ports:
