@@ -12,7 +12,7 @@ RUN pip install --no-cache-dir prometheus-client prometheus-fastapi-instrumentat
 
 VOLUME /app/data
 
-EXPOSE 8001:8001
+EXPOSE 8001
 
 ENV PYTHONUNBUFFERED=1
 
